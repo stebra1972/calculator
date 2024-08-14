@@ -1,6 +1,6 @@
 
-var a = Number(prompt("a?"))
-var b = Number(prompt("b?"));
+//var a = Number(prompt("a?"))
+//var b = Number(prompt("b?"));
 
 
 function add(a, b) {
