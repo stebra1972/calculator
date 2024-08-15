@@ -55,17 +55,17 @@ function calculate(expression) {
         }
     }
     values.push(parseFloat(number));
-    
+
     while (operators.length) {
         values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
     }
-    
+
     return parseFloat(values.pop().toFixed(3));
-    }
-    
-    function isDigit(char) {
-        return /\d/.test(char);
-    }
+}
+
+function isDigit(char) {
+    return /\d/.test(char);
+}
 
 function precedence(operator) {
     switch (operator) {
@@ -92,7 +92,7 @@ function applyOperator(operator, b, a) {
             if (b === 0) {
                 return ':-(   Fratto 0 !!'; // Division by zero
             }
-                return a / b
+            return a / b
                 ;
         default:
             return 0;
