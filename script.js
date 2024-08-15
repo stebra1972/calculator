@@ -1,30 +1,39 @@
 
-//var a = Number(prompt("a?"))
-//var b = Number(prompt("b?"));
 
-// make a cell in the top of screen to show the display
-const ere = document.createElement('div');
-display.style.verticalAlign = 'center';
-display.style.textAlign = 'center';
-display.style.margin = 'auto';
-display.style.padding = '10px';
-display.style.fontSize = '50px';
-display.style.fontWeight = 'bold';
-display.style.border = '5px solid black';
-display.textContent = '0';
-display.style.width = '500px';
-display.style.height = '50px';
-display.style.backgroundColor = 'lightgray';
+
+
+let firstNumber = '';
+let secondNumber = '';
+let operator = '';
 
 function tasto(value) {
     const display = document.getElementById('display');
     if (value === 'C') {
         display.value = '';
+        firstNumber = '';
+        secondNumber = '';
+        operator = '';
     } else if (value === '=') {
-        display.value = calculate(display.value);
+        if (firstNumber && operator && display.value) {
+            secondNumber = display.value;
+            display.value = calculate(firstNumber + operator + secondNumber);
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+        }
+    } else if (isOperator(value)) {
+        if (display.value) {
+            firstNumber = display.value;
+            operator = value;
+            display.value = '';
+        }
     } else {
         display.value += value;
     }
+}
+
+function isOperator(char) {
+    return ['+', '-', '*', '/'].includes(char);
 }
 
 function calculate(expression) {
@@ -80,7 +89,12 @@ function applyOperator(operator, b, a) {
         case '*':
             return a * b;
         case '/':
-            return a / b;
+            if (b === 0) {
+                return ':-(   Fratto 0 !!'; // Division by zero
+            }
+                return a / b
+        
+                ;
         default:
             return 0;
     }
