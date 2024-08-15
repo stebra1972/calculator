@@ -17,7 +17,16 @@ result.style.height = '50px';
 result.style.backgroundColor = 'lightgray';
 document.body.appendChild(result);
 
-
+function tasto(value) {
+    const display = document.getElementById('display');
+    if (value === 'C') {
+        display.value = '';
+    } else if (value === '=') {
+        display.value = eval(display.value); // Note: eval() can be dangerous, use with caution
+    } else {
+        display.value += value;
+    }
+}
 
 
 function add(a, b) {
@@ -56,6 +65,10 @@ function operate(operator, a, b) {
 
     }
 }
+
+
+
+
 //console.log(operate('/', a, b));  
 
 
