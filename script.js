@@ -43,7 +43,7 @@ function calculate(expression) {
 
     for (let i = 0; i < expression.length; i++) {
         const char = expression[i];
-        if (isDigit(char)) {
+        if (isDigit(char) || char === '.') {
             number += char;
         } else {
             values.push(parseFloat(number));
@@ -55,17 +55,17 @@ function calculate(expression) {
         }
     }
     values.push(parseFloat(number));
-
+    
     while (operators.length) {
         values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
     }
-
-    return values.pop();
-}
-
-function isDigit(char) {
-    return /\d/.test(char);
-}
+    
+    return parseFloat(values.pop().toFixed(3));
+    }
+    
+    function isDigit(char) {
+        return /\d/.test(char);
+    }
 
 function precedence(operator) {
     switch (operator) {
@@ -93,7 +93,6 @@ function applyOperator(operator, b, a) {
                 return ':-(   Fratto 0 !!'; // Division by zero
             }
                 return a / b
-        
                 ;
         default:
             return 0;
