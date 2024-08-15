@@ -20,94 +20,68 @@ function tasto(value) {
     const display = document.getElementById('display');
     if (value === 'C') {
         display.value = '';
-    }
-    if (value === '1')  {
-        display.value += '1'
-    }
-    if (value === '2')  {
-        display.value += '2'
-    }
-    if (value === '3')  {
-        display.value += '3'
-    }
-    if (value === '4')  {
-        display.value += '4'
-    }
-    if (value === '5')  {
-        display.value += '5'
-    }
-    if (value === '6')  {
-        display.value += '6'
-    }
-    if (value === '7')  {
-        display.value += '7'
-    }
-    if (value === '8')  {
-        display.value += '8'
-    }
-    if (value === '9')  {
-        display.value += '9'
-    }
-    if (value === '0')  {
-        display.value += '0'
-    }
-    if (value === '+')  {
-        display.value += '+'
-    }
-    if (value === '-')  {
-        display.value += '-'
-    }
-    if (value === '*')  {
-        display.value += '*'
-    }
-    if (value === '/')  {
-        display.value += '/'
-    }
-}
-
-
-
-
-function subtraction(a, b) {
-    return (a - b)
-};
-
-function product(a, b) {
-    return (a * b)
-};
-
-function division(a, b) {
-    if (b !== 0) {
-        return a / b;
+    } else if (value === '=') {
+        display.value = calculate(display.value);
     } else {
-        return "Noooooooo, non si può dividere per 0, asino !!!"
-    }
-};
-
-function operate(operator, a, b) {
-    switch (operator) {
-        case "+":
-            return add(a, );
-        case "-":
-            return subtraction(a, b);
-        case "*":
-            return product(a, b);
-        case "/":
-            if (b !== 0) {
-                return a / b;
-            } else {
-                return "Noooooooo, non si può dividere per 0, asino !!!"
-            }
-        default:
-            return "Operatore non valido"
-
+        display.value += value;
     }
 }
 
+function calculate(expression) {
+    const operators = [];
+    const values = [];
+    let number = '';
 
+    for (let i = 0; i < expression.length; i++) {
+        const char = expression[i];
+        if (isDigit(char)) {
+            number += char;
+        } else {
+            values.push(parseFloat(number));
+            number = '';
+            while (operators.length && precedence(char) <= precedence(operators[operators.length - 1])) {
+                values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
+            }
+            operators.push(char);
+        }
+    }
+    values.push(parseFloat(number));
 
+    while (operators.length) {
+        values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
+    }
 
-//console.log(operate('/', a, b));  
+    return values.pop();
+}
 
+function isDigit(char) {
+    return /\d/.test(char);
+}
 
+function precedence(operator) {
+    switch (operator) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        default:
+            return 0;
+    }
+}
 
+function applyOperator(operator, b, a) {
+    switch (operator) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return a / b;
+        default:
+            return 0;
+    }
+}
