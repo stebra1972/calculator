@@ -2,20 +2,19 @@
 //var a = Number(prompt("a?"))
 //var b = Number(prompt("b?"));
 
-// make a cell in the top of screen to show the result
-const result = document.createElement('div');
-result.style.verticalAlign = 'center';
-result.style.textAlign = 'center';
-result.style.margin = 'auto';
-result.style.padding = '10px';
-result.style.fontSize = '50px';
-result.style.fontWeight = 'bold';
-result.style.border = '5px solid black';
-result.textContent = '0';
-result.style.width = '500px';
-result.style.height = '50px';
-result.style.backgroundColor = 'lightgray';
-document.body.appendChild(result);
+// make a cell in the top of screen to show the display
+const ere = document.createElement('div');
+display.style.verticalAlign = 'center';
+display.style.textAlign = 'center';
+display.style.margin = 'auto';
+display.style.padding = '10px';
+display.style.fontSize = '50px';
+display.style.fontWeight = 'bold';
+display.style.border = '5px solid black';
+display.textContent = '0';
+display.style.width = '500px';
+display.style.height = '50px';
+display.style.backgroundColor = 'lightgray';
 
 function tasto(value) {
     const display = document.getElementById('display');

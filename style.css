@@ -7,27 +7,22 @@ html,body {
   }
 
 
-  .div {
-    display: block;
+  .display {
+    display: flex;
+    text-align: right;
+    font-size: 50px;
+    align-items: initial;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 300px;
+    height: 50px;
     background-color: royalblue;
-    justify-content: center;
-    align-items: center;
+    justify-content:initial;
     border: 7px solid black;
     background-color: rgb(127, 189, 219);
     colo
 
-}
-.grid-cell {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    border: 7px solid black;
-    background-color: rgb(127, 189, 219);
-
-}
+  }
 
 button {
     padding: 1.2rem;
