@@ -20,17 +20,53 @@ function tasto(value) {
     const display = document.getElementById('display');
     if (value === 'C') {
         display.value = '';
-    } else if (value === '=') {
-        display.value = eval(display.value); // Note: eval() can be dangerous, use with caution
-    } else {
-        display.value += value;
+    }
+    if (value === '1')  {
+        display.value += '1'
+    }
+    if (value === '2')  {
+        display.value += '2'
+    }
+    if (value === '3')  {
+        display.value += '3'
+    }
+    if (value === '4')  {
+        display.value += '4'
+    }
+    if (value === '5')  {
+        display.value += '5'
+    }
+    if (value === '6')  {
+        display.value += '6'
+    }
+    if (value === '7')  {
+        display.value += '7'
+    }
+    if (value === '8')  {
+        display.value += '8'
+    }
+    if (value === '9')  {
+        display.value += '9'
+    }
+    if (value === '0')  {
+        display.value += '0'
+    }
+    if (value === '+')  {
+        display.value += '+'
+    }
+    if (value === '-')  {
+        display.value += '-'
+    }
+    if (value === '*')  {
+        display.value += '*'
+    }
+    if (value === '/')  {
+        display.value += '/'
     }
 }
 
 
-function add(a, b) {
-    return (a + b)
-};
+
 
 function subtraction(a, b) {
     return (a - b)
@@ -44,21 +80,24 @@ function division(a, b) {
     if (b !== 0) {
         return a / b;
     } else {
-        return "Error"
+        return "Noooooooo, non si può dividere per 0, asino !!!"
     }
 };
 
 function operate(operator, a, b) {
     switch (operator) {
         case "+":
-            return add(a, b);
+            return add(a, );
         case "-":
             return subtraction(a, b);
         case "*":
             return product(a, b);
         case "/":
-            return division(a, b);
-
+            if (b !== 0) {
+                return a / b;
+            } else {
+                return "Noooooooo, non si può dividere per 0, asino !!!"
+            }
         default:
             return "Operatore non valido"
 
