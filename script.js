@@ -2,6 +2,24 @@
 //var a = Number(prompt("a?"))
 //var b = Number(prompt("b?"));
 
+// make a cell in the top of screen to show the result
+const result = document.createElement('div');
+result.style.verticalAlign = 'center';
+result.style.textAlign = 'center';
+result.style.margin = 'auto';
+result.style.padding = '10px';
+result.style.fontSize = '50px';
+result.style.fontWeight = 'bold';
+result.style.border = '5px solid black';
+result.textContent = '0';
+result.style.width = '500px';
+result.style.height = '50px';
+result.style.backgroundColor = 'lightgray';
+document.body.appendChild(result);
+
+
+
+
 
 function add(a, b) {
     return (a + b)
@@ -39,7 +57,7 @@ function operate(operator, a, b) {
 
     }
 }
-console.log(operate('/', a, b));  
+//console.log(operate('/', a, b));  
 
 
 
