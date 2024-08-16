@@ -1,7 +1,4 @@
 
-
-
-
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
@@ -93,11 +90,11 @@ function applyOperator(operator, b, a) {
             return a - b;
         case '*':
             return a * b;
-            case '/':
-                if (b === 0) {
-                    return "Errore"; // or handle division by zero as needed
-                }
-                return a / b
+        case '/':
+            if (b === 0) {
+                return "Errore"; // or handle division by zero as needed
+            }
+            return a / b
                 ;
         default:
             return 0;
