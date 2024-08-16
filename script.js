@@ -60,7 +60,12 @@ function calculate(expression) {
         values.push(applyOperator(operators.pop(), values.pop(), values.pop()));
     }
 
-    return parseFloat(values.pop().toFixed(3));
+    try {
+        return parseFloat(values.pop().toFixed(3));
+    } catch (error) {
+        console.error(error.message);
+        return "No fratto 0 !";
+    }
 }
 
 function isDigit(char) {
@@ -88,11 +93,11 @@ function applyOperator(operator, b, a) {
             return a - b;
         case '*':
             return a * b;
-        case '/':
-            if (b === 0) {
-                return ':-(   Fratto 0 !!'; // Division by zero
-            }
-            return a / b
+            case '/':
+                if (b === 0) {
+                    return "Errore"; // or handle division by zero as needed
+                }
+                return a / b
                 ;
         default:
             return 0;
